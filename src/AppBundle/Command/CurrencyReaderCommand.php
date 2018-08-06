@@ -46,9 +46,9 @@ class CurrencyReaderCommand extends ContainerAwareCommand
         $this->setUp($container);
 
         $previousIterationDate = $this->previousFetchedDataDate();
-        //Check if it's not to early to run cron, or if there are already any data.
+        //Check if it's not to early to run cron, or if there is any data at all.
         if ($previousIterationDate === false){
-            //throw something like data about this date already exists
+            //throw something like: data about this date already exists
             $output->writeln('Data about todays date are already fetched' . date('Y-m-d'));
             return;
         }
