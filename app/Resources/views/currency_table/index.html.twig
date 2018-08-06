@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-4 offset-4">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered table-responsive table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Country ID</th>
+                        <th>Rate</th>
+                        <th>Date currency actual</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for currencyRates in result %}
+                        <tr>
+                            <td>{{ currencyRates.countryId }}</td>
+                            <td>{{ currencyRates.rate }}</td>
+                            <td>{{ currencyRates.createdAt|date('Y-m-d') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="pagination justify-content-end">
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{{ path('homepage', {'offset': firstPage}) }}">First page</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{{ path('homepage', {'offset': offset == 1 ? offset : offset - 1}) }}">Previous</a>
+                </li>
+                {% for page in pages %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ path('homepage', {'offset': page}) }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{{ path('homepage', {'offset': offset == lastPage ? offset : offset + 1}) }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{{ path('homepage', {'offset': lastPage}) }}">Last page({{ lastPage }}
+                        )</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

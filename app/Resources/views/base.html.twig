@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Currency rates!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet"
+                  href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet"
+                  href="{{ asset('assets/components-font-awesome/css/font-awesome.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
